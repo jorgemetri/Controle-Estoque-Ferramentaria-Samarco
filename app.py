@@ -61,7 +61,7 @@ if st.session_state.logged_in:
     # Navegação
     pg = st.navigation(
         {
-            "Ferramentas de Estoque": [cadastrar, entradasaida, buscarproduto, visualizarestoque, movimentacoes,teste],
+            "Ferramentas de Estoque": [cadastrar, entradasaida, buscarproduto, visualizarestoque, movimentacoes],
             "Indicadores de Estoque": [graficoestoque],
             "Previsão de Estoque": [previsao]
         }
