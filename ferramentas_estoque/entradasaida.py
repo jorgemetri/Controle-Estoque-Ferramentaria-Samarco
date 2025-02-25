@@ -24,7 +24,7 @@ if st.button("Pesquisar"):
         if df_search.empty:
             st.warning("Nenhuma ferramenta encontrada com esse nome.")
         else:
-            st.dataframe(df_search)
+            st.dataframe(df_search,use_container_width=True)
     except Exception as e:
         st.error(f"Erro ao buscar ferramenta: {e}")
 
