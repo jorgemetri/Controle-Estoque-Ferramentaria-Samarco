@@ -1,15 +1,12 @@
 import streamlit as st
 import sqlite3
 import pandas as pd
+from banco.bd import connect_db  # Certifique-se de que essa função esteja definida no módulo
 
-# Função para conectar ao banco de dados
-def connect_db():
-    return sqlite3.connect('estoque.db', check_same_thread=False)
-
-# Função para exibir o estoque atual
+# Função para exibir o estoque atual a partir da tabela 'estoque_samarco'
 def exibir_estoque():
-    conn = connect_db()
-    df = pd.read_sql('SELECT * FROM produtos', conn)
+    conn = connect_db("estoque_samarco")
+    df = pd.read_sql_query("SELECT * FROM estoque_samarco", conn)
     conn.close()
     return df
 
@@ -18,6 +15,6 @@ st.write("Visualize o estoque atual em formato de tabela.")
 
 df = exibir_estoque()
 if not df.empty:
-    st.dataframe(df)
+    st.dataframe(df, use_container_width=True)
 else:
     st.warning("Nenhum produto cadastrado.")
